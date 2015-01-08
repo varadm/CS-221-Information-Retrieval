@@ -1,0 +1,6 @@
+Hello, World. world; \"World\" \'world\' .... World world
+What in the world is [100] doing * here.,,as adj ascxs [][ (Hey) Apple APPlE co-ordinate ----
+A palindrome is a word or phrase that reads the same in both directions.
+For example: eye is a palindrome and so is Do geese see god. malayalam bob
+Write a method/function that detects all palindromes in a list of tokens, and counts their frequencies.
+Method: Pairs<Palindrome,Count> computePalindromeFrequencies(List<Token>)
