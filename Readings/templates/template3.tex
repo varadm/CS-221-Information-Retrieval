@@ -1,0 +1,90 @@
+\documentclass[a4paper]{article}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+
+\title{Dureza de algoritmos sobre redes, lección 6}
+
+\author{Daniel Calambás y Frank Sebastián Franco Hernández}
+
+\date{\today}
+
+\begin{document}
+\maketitle
+
+
+\section{Introducción: Tetristán}
+
+El curso comienza con un ejemplo de coloreado de grafos, utilizando un mapa rectangular dividido en forma de piezas de tetris, que se definió como un antiguo país (ficticio) de la URSS que tenía esa forma y tenía ocho condados (las piezas en las que se dividió dicho mapa). Se plantea una operación matemática sobre los colores (definidos como los números 0, 1 y 2) y el profesor dedujo \textit{mágicamente} que el resultado daría 3. Posteriormente se aclara que tanto el bloque G como el A tienen que tener el mismo color y sin importar lo que haya en el bloque C, esa operación dará cero, y los otros tres bloques que se especifican (D, F y H) tienen que ser de los tres colores, para que dé 3 esa operación (nótese que no se utiliza ni B ni C porque tienen que ser de color forzosamente diferente a A y E no se especifica la razón de su no uso).
+
+
+\section{Eficiencia algorítmica}
+
+Se hace ya en esta parte una recapitulación de las diferentes complejidades de los distintos algoritmos mostrados en el curso (desde el orden \textit{seudolineal} de conectar dos puntos de un grafo (porque puede ser cuadrático en el peor de los casos, en el que \(m=n^2\) ), hasta el orden logarítmico de la extracción de elementos de un heap, incluyendo el algoritmo de encontrar todos los caminos más cortos entre un par de nodos, que gasta \(n^3\)). 
+
+Esta introducción fue para decir que los teóricos consideran en general que un algoritmo es eficiente si su tiempo de ejecución es de orden polinomial, y se pregunta si estos algoritmos que se vieron a lo largo de este curso fueron eficientes, y se dice que no, porque existen algunos con tiempos de ejecución exponencial, del orden de \(2^n\), por ejemplo. Y existe una clase de algoritmos que no son ni de tiempo exponencial, ni de tiempo polinómico. Dentro de ese conjunto de problemas que no encajan, están los problemas NP-completos, que son los que se estudian en esta lección (pueden ser o de tiempo polinómico o de tiempo exponencial). 
+
+\section{Grados de dureza}
+
+Se empieza comparando el grado de dureza de un algoritmo al de una roca, desde los no computables (no existe manera de resolverlo de manera computacional) hasta los computables en tiempo lineal. La dureza de un problema es pues, \textit{el tiempo de ejecución del mejor caso posible}. La dureza verdadera de un algoritmo está situada entre el mejor caso y el peor caso (en caso de no tener una respuesta en concreto). El peor caso se calcula con el orden del algoritmo (sea Theta mayúscula o sea O grande). 
+
+Posteriormente se habla de las cotas inferiores (mejor caso). La complejidad es sabida si tanto peor como mejor caso son iguales. El ejemplo usado es el de hallar el máximo de una lista, cuya \textit{complejidad} es de \(n\), puesto que su peor y su mejor caso es de \(n\).
+
+\section{Problemas de decisión}
+
+Aquí solamente se habla de problemas sobre grafos que tienen salidas booleanas, cuyo valor es 0 o 1. Conexión entre aristas (es decir, si existe camino entre dos aristas), si es un árbol, si es bipartito, si existe un camino entre dos puntos que tiene menos de cierta cantidad de pasos.
+
+\section{El camino simple más largo}
+
+En este problema se habla es de encontrar el camino simple de mayor longitud (aquel camino que no repite nodos) entre un nodo y otro de un grafo. Se toma como ejemplo un grafo de siete nodos y por lo menos el camino simple que se obtiene en un principio es de cuatro aristas, terminando siendo esto un problema de decisión en el cual se hallan todos los caminos mayores a cierta longitud, y si existe tal, se retorna, si no se devuelve lo que se tenía previamente. 
+
+\section{Problemas decidibles en tiempo polinómico}
+
+Este tipo de problema, llamado también de clase P, es aquel que, con una entrada n, su tiempo de ejecución es del orden de un polinomio, como el título lo indica. Los tiempos logarítmicos también entran en esta categoría, puesto que son de orden de \(n^k\) para algún k. 
+
+\section{Problemas decidibles en tiempo polinómico no determinista}
+
+Este tipo de problema se conoce también como clase NP. Este es aquel que tiene una entrada no determinística, pero cuyo algoritmo tiene un tiempo de ejecución polinómico. Un ejemplo de algoritmo de clase NP es aquel que resuelve rompecabezas como el sudoku. Estos problemas en específico cuentan con una suerte de \textit{certificado de aceptación} para determinar si algo está o no mal hecho (en este caso, si el número que uno puso en el sudoku debe ir ahí o no). 
+
+\section{Aceptando el certificado}
+
+Se dice que una de las definiciones de NP es que si un problema es NP, debe tener un certificado pequeño y rápido (tiempo y tamaño polinomiales), para resolver un problema de decisión determinado y arrojar respuesta positiva o no. Se retoma el ejemplo del sudoku, si está bien hecho (es decir, si la respuesta que uno pone en cierta parte de la grilla es igual a la respuesta al final de la revista) va a arrojar que sí, si no no. 
+
+Luego se pregunta el expositor si P está contenido en NP, y efectivamente está contenido uno entre el otro, porque empezando ambos se resuelven en tiempo polinómico y la verificación del NP se hace con un algoritmo de P. 
+
+
+\section{Problema del clique}
+
+Recordemos que el clique es un grafo completo, donde todos los nodos se conocen entre sí. El problema enunciado es si existe un clique K (K nodos, todos interconectados entre ellos, como ya se dijo) dentro de un grafo dado. Se trata de un problema en NP cuyo certificado son los nodos y se verifica si todos se conectan entre sí formando un clique. 
+
+\section{Cota superior exponencial}
+
+Es algo habitual el notar que existe una relación entre NP y el grupo de problemas que se resuelven en tiempos exponenciales, pero resulta que NP es un subconjunto de los exponenciales (los exp contienen a los NP y estos a su vez a los P). Un algoritmo que resuelva un problema NP para cualquier entrada es de orden exponencial, porque necesita verificar todos los certificados posibles. 
+
+\section{P igual a NP}
+
+Se habla del caso que si fuese P igual a NP (porque no es para nada descartable que NP sea igual a EXP), que haría que los protocolos criptográficos que se manejan con algoritmos en NP se fueran literalmente al drenaje, porque serían fáciles de descifrar. 
+
+\section{NP-duro}
+
+Son aquellos problemas que si se pueden resolver con rapidez (tiempo polinomial, evidentemente), pueden resolver cualquier problema en NP. 
+
+Si X es igual de duro que Y (X e Y problemas), hablando de factor polinomial, si se halla un algoritmo que resuelva X, se puede resolver (reducir) Y desde X.
+
+\section{Algoritmos relacionados con redes sociales}
+
+El algoritmo de encontrar extraños se reduce a un problema del clique en versión absurda, es decir, encontrar un clique de tamaño K que no tenga nada conectado. Se tienen dos grafos, uno H y otro G, siendo G el complemento de H. Si hay clique de tamaño S en G, H tiene un conjunto de S puntos independientes.
+
+\section{SAT es NP-duro}
+
+El problema de satisfacibilidad booleana (SAT) es el problema NP completo por excelencia y fue el primero que se definió que se tuviera este tipo de complejidad. Los problemas NP-completos deben cumplir dos condiciones, una, ser NP-duro (que nada en NP puede ser más duro que ese problema) y que ese problema sea NP. Por lo tanto SAT es NP-duro, y puede ser usado para resolver otros problemas en NP.
+
+\section{Problemas relacionados}
+
+El coloreo de grafos es un problema NP-completo. Es duro y está en NP evidentemente. Se reduce a SAT convirtiendo el cruce de nodos con colores en variables booleanas. La cantidad de cláusulas que tiene la fórmula SAT aumenta conforme aumenta la cantidad de colores que se quiera tener y los nodos y aristas que tenga el mismo grafo, aunque es más fácil colorear un grafo cuantos más colores tenga.
+
+
+\end{document}
