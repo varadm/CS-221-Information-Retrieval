@@ -33,7 +33,6 @@ class Utilities:
 
     3. Most punctuation is ignored by Google. Which punctuation to keep into account while tokenzing.
     '''
-
     def tokenize_file(self, filename):
 
         return_list = []
@@ -46,7 +45,7 @@ class Utilities:
         for line in lines:
             # Checking for standard delimiters such as ';',',','*','.',' '
             # For some advanced symbols, you'll add more stuff into reg.
-            l = re.split(r"[^-\w]+", line)
+            l = re.split(r"[\W_]+", line)
 
             # Filtering the empty strings from the list.
             l2 = filter(lambda q: str(q).lstrip('-'), l)

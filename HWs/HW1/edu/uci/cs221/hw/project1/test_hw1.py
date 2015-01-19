@@ -14,61 +14,91 @@ from WordFreq import WordFreq
 from TwoGrams import TwoGram
 from PalindromeFinder import PalindromeUtility
 
+import time
+
 __author__ = 'varadmeru'
 
 '''
-TEST Utilities
+TEST the 4 classes.
 '''
 
+# Sample Text files -
+# Work of Sherlock
 f1 = "pg100.txt"
-f2 = "helloworld.txt"
-f3 = "sherlock.txt"
-s = "Hello, World. world; \"World\" \'world\' .... World world\
-What in the world is [100] doing * here.,,as adj ascxs [][ (Hey) co-operate -- whatis---"
 
+# Sample handwritten text file
+f2 = "helloworld.txt"
+
+# Sherlock in text
+f3 = "sherlock.txt"
+
+file = f2
+
+current_milli_time = lambda: int(round(time.time() * 1000))
 
 def test_util():
     x = Utilities()
-    answer = x.tokenize_file(f3)
-    # x.print_tokens(answer)
-    print len(answer)
+    answer = x.tokenize_file(file)
+    print "Number of tokens: ", len(answer)
 
 
 def test_wordfreq():
     x = Utilities()
     y = WordFreq()
-    answer = x.tokenize_file(f3)
+    answer = x.tokenize_file(file)
     i = y.compute_word_freq(answer)
-    y.print_tokens(i)
-    print len(answer)
-    print len(i)
-
+    print "Number of distinct: ", len(i)
 
 def test_2grams():
     x = Utilities()
     z = TwoGram()
-    answer = x.tokenize_file(f3)
+    answer = x.tokenize_file(file)
     i = z.compute_2grams_freq(answer)
-    z.print_tokens(i)
-    print len(answer)
-    print len(i)
+    print "Number of 2 grams:", len(i)
 
 
 def test_palindrome_finder():
     x = Utilities()
     y = PalindromeUtility()
-    answer = x.tokenize_file(f3)
-    i = y.find_palindromes_freq(answer)
-    y.print_tokens(i)
-    print len(answer)
-    print len(i)
+    answer = x.tokenize_file(file)
+    palindromes = y.get_palindromes(answer)
+    palindromes.extend(y.get_palindromes_phrases(answer, 6))
+    i = y.find_palindromes_freq(palindromes)
+    print "Number of distinct palindromes: ", len(i)
 
 
 def __main__():
-    # test_util()
-    # test_wordfreq()
-    # test_2grams()
-    test_palindrome_finder()
+    start = current_milli_time()
 
+    current = current_milli_time()
+    # Testing the utilities
+    test_util()
+    print "+++ Time taken for utility.py: ", current_milli_time() - current
+
+    current = current_milli_time()
+    # Testing the word freq
+    test_wordfreq()
+    print "+++ Time taken for word_freq.py: ", current_milli_time() - current
+
+
+    current = current_milli_time()
+    # Testing the word freq
+    test_2grams()
+    print "+++ Time taken for 2grams.py: ", current_milli_time() - current
+
+    current = current_milli_time()
+    # Testing the word freq
+    test_palindrome_finder()
+    print "+++ Time taken for word_freq.py: ", current_milli_time() - current
+
+    print "-----------------------------------"
+    print "+++ Total Time taken: ", current_milli_time() - start
 
 __main__()
+
+
+'''
+Some Notes:
+For the pg100.txt file - Time taken:  46257 for n = 15
+For the pg100.txt file - Time taken:  13691 for n = 6
+'''
