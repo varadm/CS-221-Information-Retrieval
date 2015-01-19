@@ -22,16 +22,8 @@ class Utilities:
     def __init__(self):
         self
 
-    # Tokenize function. This tokenizes the file into words, ignoring the Capital words in them.
     '''
-    Some Important Cases:
-    1. Currently everything is being converted into lowercase. But this is not the correct way
-    to store info, as there can be a single ACRONYM and that would also be made into lower case.
-    Thus, its important to know what data is already in the list/set/map and leverage that.
-
-    2. What if you have Apple and APPLE?
-
-    3. Most punctuation is ignored by Google. Which punctuation to keep into account while tokenzing.
+    Tokenize function. This tokenizes the file into words, ignoring the Capital words in them.
     '''
     def tokenize_file(self, filename):
 
@@ -53,14 +45,26 @@ class Utilities:
             l4 = filter(lambda q: str(q).rstrip('-'), l3)
             l5 = filter(None, l4)
 
-            # Deprecated - Removing the " from the string
-            # l = map(lambda q: str(q).replace('"', ''), l)
-
             # Now, once the words are cleaned and parsed, add them to the return_list
             return_list.extend(l5)
 
         return return_list
 
+    '''
+    Print tokens.
+    '''
     def print_tokens(self, token_list):
         for token in token_list:
             print token
+
+
+'''
+Some Important Cases:
+1. Currently everything is being converted into lowercase. But this is not the correct way
+to store info, as there can be a single ACRONYM and that would also be made into lower case.
+Thus, its important to know what data is already in the list/set/map and leverage that.
+
+2. What if you have Apple and APPLE?
+
+3. Most punctuation is ignored by Google. Which punctuation to keep into account while tokenzing.
+'''

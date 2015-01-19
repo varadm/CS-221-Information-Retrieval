@@ -32,27 +32,33 @@ f2 = "helloworld.txt"
 # Sherlock in text
 f3 = "sherlock.txt"
 
-file = f2
+#
+f4 = "vendlist.txt"
+
+sample_file = f4
 
 current_milli_time = lambda: int(round(time.time() * 1000))
 
+
 def test_util():
     x = Utilities()
-    answer = x.tokenize_file(file)
+    answer = x.tokenize_file(sample_file)
+    x.print_tokens(answer)
     print "Number of tokens: ", len(answer)
 
 
 def test_wordfreq():
     x = Utilities()
     y = WordFreq()
-    answer = x.tokenize_file(file)
+    answer = x.tokenize_file(sample_file)
     i = y.compute_word_freq(answer)
     print "Number of distinct: ", len(i)
+
 
 def test_2grams():
     x = Utilities()
     z = TwoGram()
-    answer = x.tokenize_file(file)
+    answer = x.tokenize_file(sample_file)
     i = z.compute_2grams_freq(answer)
     print "Number of 2 grams:", len(i)
 
@@ -60,9 +66,9 @@ def test_2grams():
 def test_palindrome_finder():
     x = Utilities()
     y = PalindromeUtility()
-    answer = x.tokenize_file(file)
+    answer = x.tokenize_file(sample_file)
     palindromes = y.get_palindromes(answer)
-    palindromes.extend(y.get_palindromes_phrases(answer, 6))
+    palindromes.extend(y.get_palindromes_phrases(answer, 50))
     i = y.find_palindromes_freq(palindromes)
     print "Number of distinct palindromes: ", len(i)
 

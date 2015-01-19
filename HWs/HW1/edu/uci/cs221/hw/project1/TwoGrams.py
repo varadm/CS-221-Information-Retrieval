@@ -12,11 +12,18 @@ __author__ = 'varadmeru'
 
 from collections import Counter
 
+'''
+The Two gram implementation.
+'''
+
 
 class TwoGram:
     def __init__(self):
         self
 
+    '''
+    Compute the 2 grams and put them in a list. Return the list.
+    '''
     def compute_2grams(self, token_list):
         two_gram_list = []
         len_of_token_list = len(token_list)
@@ -30,12 +37,18 @@ class TwoGram:
 
         return two_gram_list
 
+    '''
+    Compute the frequencies of the computed 2-grams.
+    '''
     def compute_2grams_freq(self, token_list):
         two_gram_token_list = self.compute_2grams(token_list)
         grouped_values = Counter(two_gram_token_list)
         grouped_sorted_values = sorted(grouped_values.items(), key=lambda x: x[1], reverse=True)
         return grouped_sorted_values
 
+    '''
+    Print tokens - the pair <2-gram, frequency>
+    '''
     def print_tokens(self, token_pairs):
         for i in token_pairs:
             print i[0], ",", i[1]

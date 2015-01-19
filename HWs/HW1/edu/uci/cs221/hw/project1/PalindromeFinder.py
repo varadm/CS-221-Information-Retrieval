@@ -24,7 +24,6 @@ class PalindromeUtility:
     '''
     Fetch the single word palindromes.
     '''
-
     def get_palindromes(self, token_list):
         # Apply the lower map to make sure you do not miss out on the important words due to capitalization.
         lower_token_list = map(lambda word: str(word).lower(), token_list)
@@ -36,7 +35,6 @@ class PalindromeUtility:
     This function helps in removing the spaces and then comparing the palindromes without any spaces.
      Helps in finding the palindromes which are formed without the punctuations.
     '''
-
     @staticmethod
     def remove_spaces(s):
         l = s.split()
@@ -49,7 +47,6 @@ class PalindromeUtility:
     This fetches the palindromic phrases. It takes the token_list and the parameter 'n' which is used to create n-grams
     from the text and then the palindromes are searched.
     '''
-
     def get_palindromes_phrases(self, token_list, n):
         lower_token_list = map(lambda word: str(word).lower(), token_list)
         n_gram_palindromes = filter(lambda s: self.remove_spaces(s) == self.remove_spaces(s[::-1]),
@@ -59,7 +56,6 @@ class PalindromeUtility:
     '''
     Find the frequency of the passed palindromes
     '''
-
     @staticmethod
     def find_palindromes_freq(palindrome_list):
         grouped_values = Counter(palindrome_list)
@@ -70,7 +66,6 @@ class PalindromeUtility:
     Compute the n-grams from the passed token_list parameter. The keep_space parameter is used to create the n-grams
     with the spaces or not. Helps in reducing some computation.
     '''
-
     @staticmethod
     def compute_n_grams(token_list, n, keep_space):
         if n == 1:
@@ -91,6 +86,9 @@ class PalindromeUtility:
                     n_gram_list.append(temp)
         return n_gram_list
 
+    '''
+    Print tokens.
+    '''
     def print_tokens(self, token_pairs):
         for i in token_pairs:
             print i[0], ",", i[1]
