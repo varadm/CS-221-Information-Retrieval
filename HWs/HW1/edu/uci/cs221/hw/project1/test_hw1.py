@@ -35,7 +35,16 @@ f3 = "sherlock.txt"
 #
 f4 = "vendlist.txt"
 
-sample_file = f4
+# Sherlock in text
+f5 = "sherlock1.txt"
+
+# Test 1
+f6 = "test1.txt"
+
+# Test 2
+f7 = "test3.txt"
+
+sample_file = f1
 
 current_milli_time = lambda: int(round(time.time() * 1000))
 
@@ -52,6 +61,7 @@ def test_wordfreq():
     y = WordFreq()
     answer = x.tokenize_file(sample_file)
     i = y.compute_word_freq(answer)
+    #y.print_tokens(i)
     print "Number of distinct: ", len(i)
 
 
@@ -60,6 +70,7 @@ def test_2grams():
     z = TwoGram()
     answer = x.tokenize_file(sample_file)
     i = z.compute_2grams_freq(answer)
+    #z.print_tokens(i)
     print "Number of 2 grams:", len(i)
 
 
@@ -70,6 +81,7 @@ def test_palindrome_finder():
     palindromes = y.get_palindromes(answer)
     palindromes.extend(y.get_palindromes_phrases(answer, 50))
     i = y.find_palindromes_freq(palindromes)
+    #y.print_tokens(i)
     print "Number of distinct palindromes: ", len(i)
 
 

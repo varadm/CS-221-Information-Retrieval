@@ -28,8 +28,9 @@ def removes_spaces(s):
         print output
         return output
 
-s = "For example: eye is a palindrome and so is Do geese see god . malayalam bob"
-compute_n_grams(s.split(), 6, True)
+#s = "For example: eye is a palindrome and so is Do geese see god . malayalam bob"
+#compute_n_grams(s.split(), 6, True)
 
-removes_spaces(s)
+#removes_spaces(s)
+
 
