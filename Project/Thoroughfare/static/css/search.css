@@ -1,0 +1,53 @@
+.jumbotron {
+  background-image:url('http://meship.com/Blog/wp-content/uploads/2011/09/pathway-to-cloud-computing.jpg') !important;
+  /*background-image:url('http://goo.gl/04j7Nn');*/
+  /*background-image:url('img/pathway-to-cloud-computing.jpg') !important;*/
+  /*background-image:url('http://upload.wikimedia.org/wikipedia/commons/f/f8/Panorama_of_Dupnitsa_and_Rila_Mountain,_Bulgaria.jpg');*/
+  height: 150px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.jumbotron .container {
+  position: relative;
+  top:10px;
+}
+
+.jumbotron h4 {
+  color: #fff;
+  font-size: 46px;
+  font-family: 'Shift', sans-serif;
+  font-weight: bold;
+}
+
+.jumbotron h1 {
+  color: #222;
+  font-family: 'Shift', sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.jumbotron p {
+  font-size: 20px;
+  color: #444;
+}
+
+.jumbotron h3 {
+  font-family: 'Shift', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.jumbotron a {
+  color: #00b0ff;
+}
+*, *:before, *:after {box-sizing:  border-box !important;}
+
+.jumbotron .container .row  .col-md-12{
+  outline: 5px solid #ffffff;
+  display: inline-block;
+  padding:  .05rem;
+  /*background: #efefef;*/
+  /*background: #b0e0e6;*/
+  background: #e5efea;
+}

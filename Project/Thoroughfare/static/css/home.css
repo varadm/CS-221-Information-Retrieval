@@ -1,0 +1,44 @@
+.jumbotron {
+  background-image:url('http://meship.com/Blog/wp-content/uploads/2011/09/pathway-to-cloud-computing.jpg');
+  /*background-image:url('http://goo.gl/04j7Nn');*/
+  /*background-image:url('img/pathway-to-cloud-computing.jpg') !important;*/
+  /*background-image:url('http://upload.wikimedia.org/wikipedia/commons/f/f8/Panorama_of_Dupnitsa_and_Rila_Mountain,_Bulgaria.jpg');*/
+  height: 700px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.jumbotron .container {
+  position: relative;
+  top:150px;
+}
+
+.jumbotron h1 {
+  color: #fff;
+  font-size: 48px;  
+  font-family: 'Shift', sans-serif;
+  font-weight: bold;
+}
+
+.jumbotron p {
+  font-size: 20px;
+  color: #fff;
+}
+
+.namez {
+  background-color: #f7f7f7;
+}
+
+.jumbotron h3 {
+  font-family: 'Shift', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.jumbotron a {
+  color: #00b0ff;
+}
+
+.jumbotron .container .row .col-md-6 {
+
+}

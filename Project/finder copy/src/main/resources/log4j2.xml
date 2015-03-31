@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Appenders>
+		<RollingFile name="Finder" fileName="logs/finder.log"
+			append="false" filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+			<PatternLayout pattern="%t %d{DATE} %-5p %c{2} - %m%n" />
+			<DefaultRolloverStrategy max="4" />
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="250 MB" />
+				<DefaultRolloverStrategy max="20" />
+			</Policies>
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Logger name="org.apache.log4j.xml" level="debug">
+			<AppenderRef ref="Finder" />
+		</Logger>
+		<Root level="debug">
+			<AppenderRef ref="Finder" />
+		</Root>
+	</Loggers>
+</Configuration>

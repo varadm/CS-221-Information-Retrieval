@@ -1,0 +1,5 @@
+1. Exact title matching
+2. Exact URL matching
+3. Exact Token Matching
+4. Cosine Similarity
+5. Highest TFIDF of proper subset of terms

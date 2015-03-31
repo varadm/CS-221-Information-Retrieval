@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+    <strong>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/search.css') }}">
+    </strong>
+    <!--<link rel="stylesheet" href="main_tf_21.css">-->
+</head>
+
+<body>
+
+
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h4 class="text-left">Thoroughfare</h4>
+            </div>
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-8">
+                <form method="post" action="{{ url_for('submit') }}">
+                    <div class="input-group input-group-lg">
+                        <input type="text" class="form-control" name="search_term" placeholder= "{{ plh_term }}" >
+                        <span class="input-group-addon">Press Enter</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <br>
+                <br>
+            </div>
+            <div class="col-md-6">
+                <br>
+                <br>
+            </div>
+        </div>
+
+        {% for x in mylist %}
+            <div class="row">
+                <div class="col-md-12">
+                    <h1> {{ x.title }} </h1>
+                    <a href="{{ x.url }}">{{ x.url }}</a>
+
+                    <p> {{ x.text }}</p>
+
+                    <p> {{ x.score }}</p>
+                </div>
+            </div>
+        {% endfor %}
+
+
+    </div>
+</div>
+
+
+</body>
+</html>
